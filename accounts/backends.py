@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db.models import Q
 
 
@@ -32,14 +31,18 @@ class CaseInsensitiveAuth:
 
         return None
 
+    
     def get_user(self, user_id):
         """
-        Used by the Django authentication system to retrieve a User instance
+        Used by the Django authentiation system to retrieve a user instance
         """
+        
         try:
             user = User.objects.get(pk=user_id)
+
             if user.is_active:
                 return user
+
             return None
         except User.DoesNotExist:
             return None
